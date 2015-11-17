@@ -1,0 +1,45 @@
+{
+  "name": "dasgupta",
+  "description": "A local dev environment.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+    "drupal": {
+      "sites": {
+        "dasgupta": {
+          "active": true,
+          "deploy": {
+            "action": []
+          },
+          "drupal": {
+            "version": "6.0",
+            "install": {},
+            "settings": {
+              "files": "sites/default/files",
+              "settings": {
+                "default": {
+                  "location": "sites/default/settings.php"
+                }
+                //"dev": {
+                //  "location": "sites/default/settings.dev.php",
+                //  "template": "d7.dev.settings.php.erb"
+                //}
+              },
+              "db_file": "/assets/dasgupta/dasgupta.sql",
+              "db_name": "dasgupta"
+            }
+          },
+          "repository": {
+            "host": "bitbucket.org",
+            "uri": "git@bitbucket.org:draenen/dasgupta.git",
+            "revision": "master",
+            "remotes": {
+              "upstream": "git@bitbucket.org:monarchd/dasgupta.git"
+            }
+          }
+        }
+      }
+    }
+  }
+}

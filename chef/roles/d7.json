@@ -1,0 +1,46 @@
+{
+  "name": "d7",
+  "description": "A basic Drupal 7 install for module dev and testing.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+    "drupal": {
+      "sites": {
+        "d7": {
+          "active": true,
+          "deploy": {
+            "action": []
+          },
+          "drupal": {
+            "version": "7.0",
+            "install": {
+              "install_configure_form.update_status_module": "'array(FALSE,FALSE)'",
+              "--clean-url": 1
+            },
+            "settings": {
+              "profile": "standard",
+              "files": "sites/default/files",
+              "settings": {
+                "default": {
+                  "location": "sites/default/settings.php"
+                },
+                "dev": {
+                  "location": "sites/default/settings.dev.php",
+                  "template": "d7.dev.settings.php.erb"
+                }
+              },
+              "db_name": "d7"
+            }
+          },
+          "repository": {
+            "host": "drupal.org",
+            "uri": "http://git.drupal.org/project/drupal.git",
+            "revision": "7.x"
+          }
+        }
+      }
+    }
+  }
+}
+

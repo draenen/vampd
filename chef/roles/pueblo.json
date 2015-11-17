@@ -1,0 +1,45 @@
+{
+  "name": "pueblo",
+  "description": "A local dev environment.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+    "drupal": {
+      "sites": {
+        "pueblo": {
+          "active": true,
+          "deploy": {
+            "action": []
+          },
+          "drupal": {
+            "version": "7.0",
+            "install": {},
+            "settings": {
+              "files": "sites/default/files",
+              "settings": {
+                "default": {
+                  "location": "sites/default/settings.php"
+                },
+                "dev": {
+                  "location": "sites/default/settings.dev.php",
+                  "template": "d7.dev.settings.php.erb"
+                }
+              },
+              "db_file": "/assets/pueblo/pueblo.sql",
+              "db_name": "pueblo"
+            }
+          },
+          "repository": {
+            "host": "bitbucket.org",
+            "uri": "git@bitbucket.org:draenen/pueblo-county-portal.git",
+            "revision": "master",
+            "remotes": {
+              "upstream": "git@bitbucket.org:pueblocounty/pueblo-county-portal.git"
+            }
+          }
+        }
+      }
+    }
+  }
+}

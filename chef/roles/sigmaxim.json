@@ -1,0 +1,45 @@
+{
+  "name": "sigmaxim",
+  "description": "A local dev environment.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+    "drupal": {
+      "sites": {
+        "sigmaxim": {
+          "active": true,
+          "deploy": {
+            "action": []
+          },
+          "drupal": {
+            "version": "7.0",
+            "install": {},
+            "settings": {
+              "files": "sites/default/files",
+              "settings": {
+                "default": {
+                  "location": "sites/default/settings.php"
+                },
+                "dev": {
+                  "location": "sites/default/settings.dev.php",
+                  "template": "d7.dev.settings.php.erb"
+                }
+              },
+              "db_file": "/assets/sigmaxim/sigmaxim.sql",
+              "db_name": "sigmaxim"
+            }
+          },
+          "repository": {
+            "host": "bitbucket.org",
+            "uri": "git@bitbucket.org:draenen/sigmaxim.git",
+            "revision": "master",
+            "remotes": {
+              "upstream": "git@bitbucket.org:monarchd/sigmaxim.git"
+            }
+          }
+        }
+      }
+    }
+  }
+}

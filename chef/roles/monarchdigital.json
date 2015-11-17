@@ -1,0 +1,45 @@
+{
+  "name": "monarchdigital",
+  "description": "A local dev environment.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+    "drupal": {
+      "sites": {
+        "monarchdigital": {
+          "active": true,
+          "deploy": {
+            "action": []
+          },
+          "drupal": {
+            "version": "8.0",
+            "install": {},
+            "settings": {
+              "files": "sites/default/files",
+              "settings": {
+                "default": {
+                  "location": "sites/default/settings.php"
+                },
+                "dev": {
+                  "location": "sites/default/settings.dev.php",
+                  "template": "d8.dev.settings.php.erb"
+                }
+              },
+              "db_file": "/assets/monarchdigital/monarchdigital.sql",
+              "db_name": "monarchdigital"
+            }
+          },
+          "repository": {
+            "host": "bitbucket.org",
+            "uri": "git@bitbucket.org:draenen/monarch-d8.git",
+            "revision": "master",
+            "remotes": {
+              "upstream": "git@bitbucket.org:monarchd/monarch-d8.git"
+            }
+          }
+        }
+      }
+    }
+  }
+}

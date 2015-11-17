@@ -1,0 +1,42 @@
+{
+  "name": "cpagis",
+  "description": "A local dev environment.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+    "drupal": {
+      "sites": {
+        "cpagis": {
+          "active": true,
+          "deploy": {
+            "action": []
+          },
+          "drupal": {
+            "version": "7.0",
+            "install": {},
+            "settings": {
+              "files": "sites/default/files",
+              "settings": {
+                "default": {
+                  "location": "sites/default/settings.php"
+                },
+                "dev": {
+                  "location": "sites/default/settings.dev.php",
+                  "template": "d7.dev.settings.php.erb"
+                }
+              },
+              "db_file": "/assets/cpagis/cpagis.sql",
+              "db_name": "cpagis"
+            }
+          },
+          "repository": {
+            "host": "git.zooma.io",
+            "uri": "git@git.zooma.io:gis/cpagis.git",
+            "revision": "develop"
+          }
+        }
+      }
+    }
+  }
+}

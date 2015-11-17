@@ -1,0 +1,47 @@
+{
+  "name": "jasco",
+  "description": "A local dev environment.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+    "drupal": {
+      "sites": {
+        "jasco": {
+          "active": false,
+          "deploy": {
+            "action": []
+          },
+          "drupal": {
+            "version": "7.0",
+            "install": {},
+            "settings": {
+              "docroot": "html",
+              "files": "html/sites/default/files",
+              "settings": {
+                "default": {
+                  "location": "html/sites/default/settings.php"
+                },
+                "dev": {
+                  "location": "html/sites/default/settings.dev.php",
+                  "template": "d7.dev.settings.php.erb"
+                }
+              },
+              "db_file": "/assets/jasco/jasco.sql",
+              "db_name": "jasco",
+              "db_prefix": "jas_"
+            }
+          },
+          "repository": {
+            "host": "bitbucket.org",
+            "uri": "git@bitbucket.org:draenen/jasco.git",
+            "revision": "master",
+            "remotes": {
+              "upstream": "git@bitbucket.org:skoskie/jasco.git"
+            }
+          }
+        }
+      }
+    }
+  }
+}

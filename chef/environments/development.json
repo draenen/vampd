@@ -17,7 +17,7 @@
         "passwordless": true
       }
     },
-   "apache": {
+    "apache": {
       "default_modules": ["mod_ssl", "mod_rewrite", "mod_php5"],
       "mpm": "prefork",
       "prefork": {
@@ -46,6 +46,11 @@
         "debian": "debian"
       }
     },
+    "drupal": {
+      "drush": {
+        "revision": "master"
+      }
+    },
     "mysql": {
       "server_debian_password": "debian",
       "server_root_password": "root",
@@ -66,6 +71,7 @@
           "innodb_flush_method": "O_DIRECT",
           "innodb_file_per_table": "1",
           "innodb_buffer_pool_size": "128M",
+          "max_allowed_packet": "16M",
           "query_cache_size": "12M"
         },
         "mysqld_safe": {
@@ -80,9 +86,29 @@
       "conf_dir": "/etc/php5/apache2",
       "directives": {
         "extension": "uploadprogress.so",
-        "memory_limit": "256M",
-        "upload_max_filesize": "8M",
-        "post_max_size": "10M"
+        "max_execution_time": "300",
+        "max_input_time": "300",
+        "memory_limit": "1024M",
+        "error_reporting": "E_ALL | E_STRICT",
+        "display_errors": "On",
+        "display_startup_errors": "On",
+        "html_errors": "On",
+        "post_max_size": "210M",
+        "file_uploads": "On",
+        "upload_max_filesize": "200M",
+        "date.timezone": "America/Denver",
+        "apc.enable_cli": "1",
+        "apc.shm_size": "64M",
+        "xdebug.max_nesting_level": "256",
+        "xdebug.remote_enable": "on",
+        "xdebug.remote_connect_back": "on",
+        "xdebug.idekey": "vagrant",
+        "xdebug.remote_host": "192.168.50.5",
+        "xdebug.remote_port": "9000",
+        "xdebug.profiler_enable": "1",
+        "xdebug.profiler_output_name": "xdebug.out.%t",
+        "xdebug.profiler_output_dir": "/assets/xdebug",
+        "xdebug.profiler_enable_trigger": "1"
       }
     },
     "samba": {

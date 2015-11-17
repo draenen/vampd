@@ -21,7 +21,6 @@ require 'json'
 =end
 
 Vagrant.configure("2") do |config|
-
   working_dir = File.dirname(__FILE__) + "/"
   config.omnibus.chef_version = '11.16.2'
   config.berkshelf.enabled = true
@@ -42,16 +41,13 @@ Vagrant.configure("2") do |config|
     end
 
     server.vm.provider :virtualbox do |v|
-      v.name = "vampd"
-      v.customize ["modifyvm", :id, "--memory", "1024"]
+      v.name = "monarch"
+      v.customize ["modifyvm", :id, "--memory", "4096"]
     end
 
-    server.vm.hostname = "drupal.local"
-
+    server.vm.hostname = "monarch.local"
     server.vm.network :private_network, ip: "192.168.50.5"
-
-    server.vm.synced_folder 'assets', '/assets', disabled: true
-
+    server.vm.synced_folder "assets", "/assets", :nfs => false, :owner => "www-data", :group => "www-data"
 
     server.vm.provision :chef_solo do |chef|
       chef.log_level = :info

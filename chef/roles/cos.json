@@ -1,0 +1,46 @@
+{
+  "name": "cos",
+  "description": "A local dev environment.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+    "drupal": {
+      "sites": {
+        "cos": {
+          "active": true,
+          "deploy": {
+            "action": []
+          },
+          "drupal": {
+            "version": "7.0",
+            "install": {},
+            "settings": {
+              "docroot": "docroot",
+              "files": "",
+              "settings": {
+                "default": {
+                  "location": "docroot/sites/default/settings.php"
+                },
+                "dev": {
+                  "location": "docroot/sites/default/settings.dev.php",
+                  "template": "d7.dev.settings.php.erb"
+                }
+              },
+              "db_file": "/assets/cos/cos.sql",
+              "db_name": "cos"
+            }
+          },
+          "repository": {
+            "host": "bitbucket.org",
+            "uri": "git@bitbucket.org:monarchd/cos.git",
+            "revision": "restructure",
+            "remotes": {
+              "upstream": "coloradospr@svn-6971.prod.hosting.acquia.com:coloradospr.git"
+            }
+          }
+        }
+      }
+    }
+  }
+}

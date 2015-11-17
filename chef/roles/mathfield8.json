@@ -1,0 +1,42 @@
+{
+  "name": "mathfield8",
+  "description": "A Drupal 8 install for Math Field development.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+    "drupal": {
+      "sites": {
+        "mathfield8": {
+          "active": true,
+          "deploy": {
+            "action": []
+          },
+          "drupal": {
+            "version": "8.0",
+            "install": {
+              "install_configure_form.update_status_module": "'array(FALSE,FALSE)'",
+              "--clean-url": 1
+            },
+            "settings": {
+              "profile": "standard",
+              "files": "sites/default/files",
+              "settings": {
+                "default": {
+                  "location": "sites/default/settings.php"
+                }
+              },
+              "db_name": "mathfield8"
+            }
+          },
+          "repository": {
+            "host": "drupal.org",
+            "uri": "http://git.drupal.org/project/drupal.git",
+            "revision": "8.0.x"
+          }
+        }
+      }
+    }
+  }
+}
+
