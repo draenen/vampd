@@ -1,25 +1,21 @@
 {
-  "name": "scug",
-  "description": "A basic Drupal 7 install for module dev and testing.",
+  "name": "root9b",
+  "description": "A local dev environment.",
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {},
   "override_attributes": {
     "drupal": {
       "sites": {
-        "scug": {
-          "active": false,
+        "root9b": {
+          "active": true,
           "deploy": {
             "action": []
           },
           "drupal": {
             "version": "7.0",
-            "install": {
-              "install_configure_form.update_status_module": "'array(FALSE,FALSE)'",
-              "--clean-url": 1
-            },
+            "install": {},
             "settings": {
-              "profile": "standard",
               "files": "sites/default/files",
               "settings": {
                 "default": {
@@ -30,17 +26,20 @@
                   "template": "d7.dev.settings.php.erb"
                 }
               },
-              "db_name": "scug"
+              "db_file": "/assets/root9b/root9b.sql",
+              "db_name": "root9b"
             }
           },
           "repository": {
-            "host": "drupal.org",
-            "uri": "http://git.drupal.org/project/drupal.git",
-            "revision": "7.x"
+            "host": "bitbucket.org",
+            "uri": "git@bitbucket.org:draenen/root9b.git",
+            "revision": "master",
+            "remotes": {
+              "upstream": "git@bitbucket.org:monarchd/root9b.git"
+            }
           }
         }
       }
     }
   }
 }
-

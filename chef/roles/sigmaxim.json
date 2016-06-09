@@ -26,7 +26,7 @@
                   "template": "d7.dev.settings.php.erb"
                 }
               },
-              "db_file": "/assets/sigmaxim/sigmaxim.sql",
+              "db_file": "/assets/sigmaxim/rexnord.sql",
               "db_name": "sigmaxim"
             }
           },

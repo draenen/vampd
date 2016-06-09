@@ -1,19 +1,19 @@
 {
-  "name": "scug",
-  "description": "A basic Drupal 7 install for module dev and testing.",
+  "name": "d8",
+  "description": "A Drupal 8 install for module development.",
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {},
   "override_attributes": {
     "drupal": {
       "sites": {
-        "scug": {
-          "active": false,
+        "d8": {
+          "active": true,
           "deploy": {
             "action": []
           },
           "drupal": {
-            "version": "7.0",
+            "version": "8.0",
             "install": {
               "install_configure_form.update_status_module": "'array(FALSE,FALSE)'",
               "--clean-url": 1
@@ -24,19 +24,15 @@
               "settings": {
                 "default": {
                   "location": "sites/default/settings.php"
-                },
-                "dev": {
-                  "location": "sites/default/settings.dev.php",
-                  "template": "d7.dev.settings.php.erb"
                 }
               },
-              "db_name": "scug"
+              "db_name": "d8"
             }
           },
           "repository": {
             "host": "drupal.org",
             "uri": "http://git.drupal.org/project/drupal.git",
-            "revision": "7.x"
+            "revision": "8.0.x"
           }
         }
       }
